@@ -7,7 +7,7 @@ exports.index = function(req, res) {
 };
 
 exports.ip = function(req, res) {
-  res.setHeader('Content-Type', 'text/plain');
+  res.type('text/plain');
   res.send(req.ip);
 };
 
