@@ -4,22 +4,37 @@
  * Date: 26 Aug 2013
  */
 
+/* Requires */
 var express = require('express');
+var path = require('path');
+var routes = require('./routes');
+var api = require('./routes/api');
+
+/* Intialization */
 var app = express();
 
 /* Settings */
-app.enable('trust proxy');
+app.enable('trust proxy');    // comment out this line if not running behind reverse proxy
 app.set('port', process.env.PORT || 8080);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 
 /* Uses */
+app.use(express.favicon());
 app.use(express.logger());
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
-/* Routes */
-app.get('/', function(req, res) {
-  res.setHeader('Content-Type', 'text/plain');
-  res.send(req.ip);
-});
+/* Web routes */
+app.get('/', routes.index);
 
+/* API routes */
+app.get('/api/ip', api.ip);
+app.get('/api', api.index);
+
+/* Misc routes */
 app.get('*', function(req, res) {
   res.send(404, 'I don\'t know what is ' + req.path);
 });
