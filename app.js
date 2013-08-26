@@ -24,8 +24,8 @@ app.use(express.favicon());
 app.use(express.logger());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 
 /* Web routes */
 app.get('/', routes.index);
