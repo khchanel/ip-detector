@@ -6,10 +6,10 @@
 
 var express = require('express');
 var app = express();
-var PORT = process.env.PORT || 8080;
 
 /* Settings */
 app.enable('trust proxy');
+app.set('port', process.env.PORT || 8080);
 
 /* Uses */
 app.use(express.logger());
@@ -21,7 +21,8 @@ app.get('/', function(req, res) {
 });
 
 
-/* bind port to listen on */
-app.listen(PORT);
-console.log("Listening on port: " + PORT);
+/* Start server */
+app.listen(app.get('port'));
+console.log('Express server listening on port ' + app.get('port'));
+console.log('env: ' + app.get('env'));
 
