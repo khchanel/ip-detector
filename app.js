@@ -22,6 +22,7 @@ app.set('view engine', 'jade');
 /* Uses */
 app.use(express.favicon());
 app.use(express.logger());
+app.use(express.compress());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use('/static', express.static(path.join(__dirname, 'public')));
