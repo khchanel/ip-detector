@@ -10,6 +10,10 @@
     "node": "0.10.x",
     "npm": "1.3.x"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "http://github.com/khchanel/ip-detector.git"
+  },
   "scripts": {
     "start": "node app.js"
   }
