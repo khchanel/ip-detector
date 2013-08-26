@@ -13,10 +13,8 @@ app.use(express.logger());
 
 /* Routes */
 app.get('/', function(req, res) {
-  var clientIp = req.connection.remoteAddress;
-
   res.setHeader('Content-Type', 'text/plain');
-  res.send(clientIp);
+  res.send(req.ip);
 });
 
 
