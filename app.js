@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('*', function(req, res) {
-  res.send(404, 'I don\'t know what is :-/' + req.path);
+  res.send(404, 'I don\'t know what is ' + req.path);
 });
 app.all('*', function(req, res) {
   res.send('I don\'t know what to do :-S');
