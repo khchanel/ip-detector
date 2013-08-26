@@ -20,6 +20,13 @@ app.get('/', function(req, res) {
   res.send(req.ip);
 });
 
+app.get('*', function(req, res) {
+  res.send(404, 'I don\'t know what is :-/' + req.path);
+});
+app.all('*', function(req, res) {
+  res.send('I don\'t know what to do :-S');
+});
+
 
 /* Start server */
 app.listen(app.get('port'));
